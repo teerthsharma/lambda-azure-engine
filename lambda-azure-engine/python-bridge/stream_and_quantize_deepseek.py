@@ -3,6 +3,9 @@ import torch
 import numpy as np
 import struct
 import gc
+import warnings
+os.environ["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
+warnings.filterwarnings("ignore", module="huggingface_hub")
 from huggingface_hub import hf_hub_download, model_info
 
 # Try to import safetensors, handle gracefully for Colab
