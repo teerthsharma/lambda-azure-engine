@@ -83,6 +83,8 @@ def stream_and_quantize(model_id="deepseek-ai/DeepSeek-V2", output_file="200b_la
                     f_out.write(packed.tobytes())
                 else:
                     # Keep as float16/bfloat16 numpy array
+                    if tensor.dtype == torch.bfloat16:
+                        tensor = tensor.to(torch.float16)
                     arr = tensor.cpu().numpy()
                     data_bytes = arr.tobytes()
                     f_out.write(struct.pack('B', 0)) # is_ternary = False
