@@ -1,0 +1,12 @@
+[package]
+name = "lambda-azure-kernel"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+memmap2 = "0.9"
+zerocopy = { version = "0.7", features = ["derive"] }
+rand = "0.8"
+rayon = "1.8"
+anyhow = "1.0"
+bitvec = "1.0"

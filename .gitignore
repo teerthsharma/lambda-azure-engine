@@ -1,0 +1,18 @@
+# Internal Agent and Cache Directories
+.agents/
+.gemini/
+__pycache__/
+*.pyc
+
+# Model Weights and Checkpoints
+*.pt
+*.bin
+*.safetensors
+
+# Logs and Outputs
+*.log
+*.out
+benchmark.png
+
+# Jupyter/Colab
+.ipynb_checkpoints/
