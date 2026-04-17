@@ -16,7 +16,7 @@ cells = []
 # --- Header ---
 cells.append(md(
     "# Lambda Azure Engine — Omega Point Runtime\n"
-    "## 14B Parameter Holographic Subsumption via p-adic Valuational Spaces\n\n"
+    "## 1.5B Parameter Holographic Subsumption via p-adic Valuational Spaces\n\n"
     "This notebook clones the LAE repository from GitHub, runs the full pipeline, "
     "and produces a downloadable output artifact.\n\n"
     "**Instructions:** Set your GitHub repo URL in Cell 1, then **Runtime → Run All**."
@@ -93,16 +93,16 @@ cells.append(code([
 
 # --- Cell 7: Stream Qwen3-Coder-Next (optional, long) ---
 cells.append(md(
-    "## 5. (Optional) Stream & Quantize Qwen2.5-14B (14B)\n\n"
-    "> **Warning:** This cell downloads ~28GB of data, processes it shard-by-shard, "
-    "and produces a ~3.5GB packed binary. It will take **several hours** on Colab. "
+    "## 5. (Optional) Stream & Quantize Qwen2.5-1.5B (1.5B)\n\n"
+    "> **Warning:** This cell downloads ~3GB of data, processes it shard-by-shard, "
+    "and produces a ~350MB packed binary. It will take **several hours** on Colab. "
     "Skip this cell if you only want to validate the math.\n\n"
     "Uncomment the last line to run."
 ))
 cells.append(code([
     'from stream_and_quantize_qwen import stream_and_quantize\n',
     '\n',
-    'stream_and_quantize(model_id="Qwen/Qwen2.5-14B", output_file="14b_lambda_padic_holographic.bin")\n',
+    'stream_and_quantize(model_id="Qwen/Qwen2.5-1.5B", output_file="1_5b_lambda_padic_holographic.bin")\n',
 ]))
 
 # --- Cell 8: Evaluate perplexity ---
@@ -139,7 +139,7 @@ cells.append(code([
     '    "moe_fp16.pt",\n',
     '    "moe_ternary_packed.bin",\n',
     '    "benchmark.png",\n',
-    '    "14b_lambda_padic_holographic.bin",\n',
+    '    "1_5b_lambda_padic_holographic.bin",\n',
     '    "test_report.txt",\n',
     ']\n',
     '\n',

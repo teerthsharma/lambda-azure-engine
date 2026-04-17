@@ -1,6 +1,6 @@
 # Lambda Azure Engine (LAE)
 
-**Target:** 14B Parameters (Total) / 140M Parameters (Active)
+**Target:** 1.5B Parameters (Total) / 15M Parameters (Active)
 **Hardware:** 6GB VRAM (RTX 4060) / 100GB+ NVMe (Demand-Paged)
 **Core Technologies:** p-adic Valuations ($p=3$), Perfectoid Tilting ($\mathbb{F}_3[t]$), 0-D Persistent Homology (KV-Cache), Sheaf Context (KV-Compression), AdS/CFT Emulation (Distillation).
 
@@ -8,10 +8,10 @@
 
 ## 1. System Architecture
 
-The Lambda Azure Engine implements a non-standard mathematical inference pipeline to fit a 14B parameter Mixture-of-Experts (MoE) model into a 6GB VRAM budget. It uses $O(n \log n)$ persistent homology for KV-cache clustering and $O(1)$ precomputed simplicial cohomology for expert pruning.
+The Lambda Azure Engine implements a non-standard mathematical inference pipeline to fit a 1.5B parameter Mixture-of-Experts (MoE) model into a 6GB VRAM budget. It uses $O(n \log n)$ persistent homology for KV-cache clustering and $O(1)$ precomputed simplicial cohomology for expert pruning.
 
 ### 1.1 Memory Budget (6GB VRAM)
-- **Active Weights (140M params, 2-bit p-adic):** 0.5 GB
+- **Active Weights (15M params, 2-bit p-adic):** 0.5 GB
 - **KV Cache (4k tokens, p-adic encoded):** 0.5 GB
 - **Sheaf Stalk Hash Table:** 0.4 GB
 - **0-D Persistence Union-Find Index:** 0.1 GB
@@ -40,8 +40,8 @@ The KV-cache is compressed by treating the conversation as a presheaf of stalks 
 - **Storage:** A Hash Table mapping `(turn_index, window_offset) -> stalk_vector`. Memory scales with conversation branches, not linear token count.
 
 ### 1.6 AdS/CFT Holographic Emulation
-- **Bulk:** 14B parameter model on NVMe.
-- **Boundary:** 140M parameter active set in VRAM + 100M parameter Reconstruction Network.
+- **Bulk:** 1.5B parameter model on NVMe.
+- **Boundary:** 15M parameter active set in VRAM + 100M parameter Reconstruction Network.
 - **Execution:** Boundary output + Reconstruction Network output $\approx$ Bulk output (with 5-10% perplexity degradation).
 
 ---
@@ -57,5 +57,5 @@ The KV-cache is compressed by treating the conversation as a presheaf of stalks 
 ## 3. Quick Start (Colab)
 
 1. Open `python-bridge/Omega_Point_Colab.ipynb`.
-2. Run the initialization cells to simulate the 14B/6GB environment.
+2. Run the initialization cells to simulate the 1.5B/6GB environment.
 3. Execute the `run_inference()` cell to test the p-adic dot product and persistent homology wavefront paging.
