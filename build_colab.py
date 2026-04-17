@@ -16,7 +16,7 @@ cells = []
 # --- Header ---
 cells.append(md(
     "# Lambda Azure Engine — Omega Point Runtime\n"
-    "## 200B Parameter Inference on 6GB VRAM via Ternary XOR+POPCNT\n\n"
+    "## 80B Parameter Holographic Subsumption via p-adic Valuational Spaces\n\n"
     "This notebook clones the LAE repository from GitHub, runs the full pipeline, "
     "and produces a downloadable output artifact.\n\n"
     "**Instructions:** Set your GitHub repo URL in Cell 1, then **Runtime → Run All**."
@@ -97,18 +97,18 @@ cells.append(code([
     'quantize_main()\n',
 ]))
 
-# --- Cell 7: Stream DeepSeek-V2 (optional, long) ---
+# --- Cell 7: Stream Qwen3-Coder-Next (optional, long) ---
 cells.append(md(
-    "## 6. (Optional) Stream & Quantize DeepSeek-V2 (236B)\n\n"
-    "> **Warning:** This cell downloads ~472GB of data, processes it shard-by-shard, "
-    "and produces a ~55GB packed binary. It will take **several hours** on Colab. "
+    "## 6. (Optional) Stream & Quantize Qwen3-Coder-Next (80B)\n\n"
+    "> **Warning:** This cell downloads ~160GB of data, processes it shard-by-shard, "
+    "and produces a ~20GB packed binary. It will take **several hours** on Colab. "
     "Skip this cell if you only want to validate the math.\n\n"
     "Uncomment the last line to run."
 ))
 cells.append(code([
-    'from stream_and_quantize_deepseek import stream_and_quantize\n',
+    'from stream_and_quantize_qwen import stream_and_quantize\n',
     '\n',
-    'stream_and_quantize(model_id="deepseek-ai/DeepSeek-V2", output_file="200b_lae_ternary_packed.bin")\n',
+    'stream_and_quantize(model_id="Qwen/Qwen3-Coder-Next", output_file="80b_lambda_padic_holographic.bin")\n',
 ]))
 
 # --- Cell 8: Evaluate perplexity ---
@@ -145,7 +145,7 @@ cells.append(code([
     '    "moe_fp16.pt",\n',
     '    "moe_ternary_packed.bin",\n',
     '    "benchmark.png",\n',
-    '    "200b_lae_ternary_packed.bin",\n',
+    '    "80b_lambda_padic_holographic.bin",\n',
     '    "test_report.txt",\n',
     ']\n',
     '\n',
