@@ -109,5 +109,6 @@ def stream_and_quantize(model_id="Qwen/Qwen2.5-1.5B", output_file="1_5b_lambda_p
     print(f"Final LAE disk footprint: {os.path.getsize(output_file)/1e9:.2f} GB.")
 
 if __name__ == "__main__":
-    print("Streamer ready. In Colab, execute stream_and_quantize() directly.")
+    print("Streamer ready. Running stream_and_quantize() locally.")
+    stream_and_quantize()
 
