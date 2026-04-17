@@ -97,7 +97,10 @@ def stream_and_quantize(model_id="Qwen/Qwen3.5-35B-A3B", output_file="35b_lambda
             gc.collect()
             
             try:
-                os.remove(shard_path)
+                real_path = os.path.realpath(shard_path)
+                os.remove(real_path)
+                if os.path.exists(shard_path) and os.path.islink(shard_path):
+                    os.remove(shard_path)
                 print(f"  -> Purged shard from disk cache (Holographic bulk constraint).")
             except Exception as e:
                 print(f"  -> Warning: Could not delete shard: {e}")
