@@ -1,14 +1,14 @@
 # 200B Parameter Scaling Plan (Lambda Series)
 
-## Current Implementation (80B Subsumption)
-The Lambda Azure Engine currently operates at an 80B parameter scale. Through p-adic Valuational Quantization and Categorical Context Sheaves, the engine successfully maps this 80B bulk onto a 6GB VRAM footprint via a Holographic Boundary (~800M active parameters).
+## Current Implementation (35B Subsumption)
+The Lambda Azure Engine currently operates at an 35B parameter scale. Through p-adic Valuational Quantization and Categorical Context Sheaves, the engine successfully maps this 35B bulk onto a 6GB VRAM footprint via a Holographic Boundary (~350M active parameters).
 
 ## The Path to 200B Parameters
 To achieve the ultimate 200B target while strictly enforcing the 10^3 context compression and the 6GB VRAM hardware ceiling (RTX 4060), we will employ the following mathematical subsumption strategies:
 
 ### 1. Advanced Holographic Tensor Networks
-- **Current State:** The boundary execution handles an 800M parameter active slice.
-- **200B Strategy:** We will expand the Bulk to 200B parameters sitting purely on NVMe. The AdS/CFT holographic reconstruction network will be refined so the boundary projection layer dynamically selects the most relevant manifold intersections without exceeding the 800M VRAM limit.
+- **Current State:** The boundary execution handles an 350M parameter active slice.
+- **200B Strategy:** We will expand the Bulk to 200B parameters sitting purely on NVMe. The AdS/CFT holographic reconstruction network will be refined so the boundary projection layer dynamically selects the most relevant manifold intersections without exceeding the 350M VRAM limit.
 
 ### 2. Enhanced Categorical Context Sheaves (CCS)
 - **Current State:** O(1) memory retrieval via presheaves.
@@ -23,4 +23,4 @@ To achieve the ultimate 200B target while strictly enforcing the 10^3 context co
 - **200B Strategy:** The 200B model will natively rely on these Betti numbers and Motivic classes to eliminate the hallucination risks associated with higher parameter capacities. It will not guess the next token, but logically compute the unique categorical morphism to extend the sheaf.
 
 ## Conclusion
-The scale from 80B to 200B will be achieved entirely through architectural topology and p-adic analysis, requiring zero additional computational scaling or VRAM overhead.
+The scale from 35B to 200B will be achieved entirely through architectural topology and p-adic analysis, requiring zero additional computational scaling or VRAM overhead.

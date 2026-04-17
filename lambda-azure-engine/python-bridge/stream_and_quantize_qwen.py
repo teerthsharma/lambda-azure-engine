@@ -51,7 +51,7 @@ def apply_padic_valuational_quantization(tensor, p=3):
     w_padic = np.where(w_int % p == 0, 0, np.sign(w_int))
     return w_padic.astype(np.int8)
 
-def stream_and_quantize(model_id="Qwen/Qwen3-Coder-Next", output_file="80b_lambda_padic_holographic.bin"):
+def stream_and_quantize(model_id="Qwen/Qwen3.5-35B-A3B", output_file="35b_lambda_padic_holographic.bin"):
     print(f"Initializing p-adic streaming quantization for {model_id} (Lambda Series)...")
     print("Executing Holographic Tensor Network memory mapping...")
     
