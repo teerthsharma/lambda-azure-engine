@@ -170,9 +170,10 @@ if TRITON_AVAILABLE:
 
         # Final store of acc — only used if the inner loop path wasn't taken
         # (dead path kept for reference)
-        # c_ptrs = c_ptr + offs_m[:, None] * stride_cm + offs_n[None, :] * stride_cn
-        # c_mask = (offs_m[:, None] < M) & (offs_n[None, :] < N)
         # tl.store(c_ptrs, acc, mask=c_mask)
+
+    ternary_gemm_kernel = _ternary_dot_kernel
+    
 
 
 # ---------------------------------------------------------------------------
