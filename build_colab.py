@@ -83,15 +83,10 @@ cells.append(code([
     'print(f"Memory reduction: {(1 - compressed.shape[0]/keys.shape[0])*100:.1f}%")\n',
 ]))
 
-# --- Cell 5: Train small MoE ---
-cells.append(md("## 4. Train 150M MoE Model (Quick Validation)"))
-cells.append(code([
-    'from train_ternary_moe import TernaryMoEModel, MoEConfig, train\n',
-    'train()\n',
-]))
+
 
 # --- Cell 6: Quantize to ternary ---
-cells.append(md("## 5. TWN Quantization → Packed 2-bit $\\mathbb{Z}_3$"))
+cells.append(md("## 4. TWN Quantization → Packed 2-bit $\\mathbb{Z}_3$"))
 cells.append(code([
     'from quantize_to_ternary import main as quantize_main\n',
     'quantize_main()\n',
@@ -99,7 +94,7 @@ cells.append(code([
 
 # --- Cell 7: Stream Qwen3-Coder-Next (optional, long) ---
 cells.append(md(
-    "## 6. (Optional) Stream & Quantize Qwen2.5-14B (14B)\n\n"
+    "## 5. (Optional) Stream & Quantize Qwen2.5-14B (14B)\n\n"
     "> **Warning:** This cell downloads ~28GB of data, processes it shard-by-shard, "
     "and produces a ~3.5GB packed binary. It will take **several hours** on Colab. "
     "Skip this cell if you only want to validate the math.\n\n"
@@ -112,28 +107,28 @@ cells.append(code([
 ]))
 
 # --- Cell 8: Evaluate perplexity ---
-cells.append(md("## 7. Evaluate Perplexity"))
+cells.append(md("## 6. Evaluate Perplexity"))
 cells.append(code([
     'from evaluate_perplexity import evaluate\n',
     'evaluate()\n',
 ]))
 
 # --- Cell 9: Benchmark suite ---
-cells.append(md("## 8. Benchmark Suite (Perplexity vs VRAM)"))
+cells.append(md("## 7. Benchmark Suite (Perplexity vs VRAM)"))
 cells.append(code([
     'from benchmark_suite import main as bench_main\n',
     'bench_main()\n',
 ]))
 
 # --- Cell 9.5: Automated Testing ---
-cells.append(md("## 9. Automated LLM Testing"))
+cells.append(md("## 8. Automated LLM Testing"))
 cells.append(code([
     'from integration_test import run_tests\n',
     'run_tests()\n',
 ]))
 
 # --- Cell 10: Collect & download output ---
-cells.append(md("## 10. Download Output Artifacts"))
+cells.append(md("## 9. Download Output Artifacts"))
 cells.append(code([
     'import os, zipfile, shutil\n',
     '\n',
