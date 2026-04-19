@@ -51,7 +51,7 @@ def apply_padic_valuational_quantization(tensor, p=3):
     w_padic = np.where(w_int % p == 0, 0, np.sign(w_int))
     return w_padic.astype(np.int8)
 
-def stream_and_quantize(model_id="Qwen/Qwen2.5-14B", output_file="14b_lambda_padic_holographic.bin"):
+def stream_and_quantize(model_id="Qwen/Qwen2.5-1.5B", output_file="1_5b_lambda_padic_holographic.bin"):
     print(f"Initializing p-adic streaming quantization for {model_id} (Lambda Series)...")
     print("Executing Holographic Tensor Network memory mapping...")
     
@@ -109,5 +109,6 @@ def stream_and_quantize(model_id="Qwen/Qwen2.5-14B", output_file="14b_lambda_pad
     print(f"Final LAE disk footprint: {os.path.getsize(output_file)/1e9:.2f} GB.")
 
 if __name__ == "__main__":
-    print("Streamer ready. In Colab, execute stream_and_quantize() directly.")
+    print("Streamer ready. Running stream_and_quantize() locally.")
+    stream_and_quantize()
 
