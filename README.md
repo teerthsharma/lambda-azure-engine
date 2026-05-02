@@ -20,8 +20,8 @@ Lambda Azure Engine is an experimental sandbox for exploring **ternary quantizat
 - **Union‑Find for connected components** (`homology.rs`).
 
 ## What this repo does **not** contain
-- A real 14B/200B model or production MoE inference pipeline.
-- Full‑rigor p‑adic, perfectoid, or holographic implementations beyond the toy proxies below.
+- A real 14B/200B model or a production MoE inference pipeline.
+
 - End‑to‑end training, evaluation, or deployment tooling.
 
 If you need a working large‑scale model, this repository is **not** that; it is a collection of small, illustrative experiments.
