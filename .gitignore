@@ -13,6 +13,10 @@ __pycache__/
 *.log
 *.out
 benchmark.png
+test_report.txt
+
+# Rust build artifacts
+**/target/
 
 # Jupyter/Colab
 .ipynb_checkpoints/

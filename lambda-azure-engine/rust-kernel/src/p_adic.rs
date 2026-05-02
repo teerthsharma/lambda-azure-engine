@@ -82,3 +82,22 @@ impl PAdicLattice {
         (3.0f64).powi(-(diff.valuation() as i32))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{PAdicLattice, PAdicWeight};
+
+    #[test]
+    fn valuation_detects_first_nonzero_trit() {
+        let w = PAdicWeight { digits: 0b000001 };
+        assert_eq!(w.valuation(), 0);
+    }
+
+    #[test]
+    fn distance_matches_expected() {
+        let a = PAdicWeight { digits: 0b000001 };
+        let b = PAdicWeight { digits: 0b000000 };
+        let distance = PAdicLattice::distance(&a, &b);
+        assert!((distance - 1.0).abs() < 1e-9);
+    }
+}

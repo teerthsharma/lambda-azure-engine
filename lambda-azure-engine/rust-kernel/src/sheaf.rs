@@ -31,3 +31,25 @@ impl SheafContext {
         self.betti_numbers[0] = self.stalks.len();
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::SheafContext;
+
+    #[test]
+    fn can_glue_requires_exact_match() {
+        let a = vec![1u8, 2, 3];
+        let b = vec![1u8, 2, 3];
+        let c = vec![1u8, 2, 4];
+        assert!(SheafContext::can_glue(&a, &b));
+        assert!(!SheafContext::can_glue(&a, &c));
+    }
+
+    #[test]
+    fn betti_updates_with_sections() {
+        let mut ctx = SheafContext::new();
+        ctx.add_section(0, 0, vec![1u8]);
+        ctx.add_section(1, 0, vec![2u8]);
+        assert_eq!(ctx.betti_numbers[0], 2);
+    }
+}

@@ -39,3 +39,17 @@ impl PersistenceUnionFind {
         self.num_components
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::PersistenceUnionFind;
+
+    #[test]
+    fn unions_reduce_components() {
+        let mut uf = PersistenceUnionFind::new(3);
+        uf.union_if_close(0, 1, 0.1, 0.2);
+        assert_eq!(uf.betti_0(), 2);
+        uf.union_if_close(1, 2, 0.1, 0.2);
+        assert_eq!(uf.betti_0(), 1);
+    }
+}

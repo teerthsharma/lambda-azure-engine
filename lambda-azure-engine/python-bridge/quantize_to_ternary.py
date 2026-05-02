@@ -1,27 +1,10 @@
-import torch
-import numpy as np
 import os
 import struct
 
-def pack_ternary(values: np.ndarray) -> np.ndarray:
-    """Pack an int8 array of {-1, 0, 1} into uint32 (16 values per word)."""
-    assert values.dtype == np.int8
-    flat = values.ravel()
-    pad = (16 - len(flat) % 16) % 16
-    if pad:
-        flat = np.concatenate([flat, np.zeros(pad, dtype=np.int8)])
+import numpy as np
+import torch
 
-    n_words = len(flat) // 16
-    packed = np.zeros(n_words, dtype=np.uint32)
-
-    for i in range(16):
-        v = flat[i::16].astype(np.int32)
-        presence = (v != 0).astype(np.uint32)
-        sign = (v < 0).astype(np.uint32)
-        two_bits = presence | (sign << 1)
-        packed |= two_bits << (i * 2)
-
-    return packed
+from lae_math import pack_ternary
 
 def apply_twn_quantization(tensor):
     """Applies Ternary Weight Networks (TWN) quantization to a tensor."""

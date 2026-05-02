@@ -1,7 +1,10 @@
 import json
 import os
 
-base_dir = r"c:\Users\seal\Desktop\New folder (13)\lambda-azure-engine\python-bridge"
+base_dir = os.environ.get(
+    "LAE_NOTEBOOK_DIR",
+    os.path.join(os.path.dirname(__file__), "lambda-azure-engine", "python-bridge"),
+)
 
 GITHUB_REPO_PLACEHOLDER = "teerthsharma/lambda-azure-engine"
 

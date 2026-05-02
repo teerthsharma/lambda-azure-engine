@@ -8,48 +8,13 @@ os.environ["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
 warnings.filterwarnings("ignore", module="huggingface_hub")
 from huggingface_hub import hf_hub_download, model_info
 
+from lae_math import apply_padic_valuational_quantization, pack_ternary
+
 # Try to import safetensors, handle gracefully for Colab
 try:
     from safetensors.torch import load_file
 except ImportError:
     print("Please install safetensors: pip install safetensors")
-
-def pack_ternary(values: np.ndarray) -> np.ndarray:
-    """Pack an int8 array of {-1, 0, 1} into uint32 (16 values per word)."""
-    assert values.dtype == np.int8
-    flat = values.ravel()
-    pad = (16 - len(flat) % 16) % 16
-    if pad:
-        flat = np.concatenate([flat, np.zeros(pad, dtype=np.int8)])
-
-    n_words = len(flat) // 16
-    packed = np.zeros(n_words, dtype=np.uint32)
-
-    for i in range(16):
-        v = flat[i::16].astype(np.int32)
-        presence = (v != 0).astype(np.uint32)
-        sign = (v < 0).astype(np.uint32)
-        two_bits = presence | (sign << 1)
-        packed |= two_bits << (i * 2)
-
-    return packed
-
-def apply_padic_valuational_quantization(tensor, p=3):
-    """
-    Applies p-adic Valuational Quantization (Lambda Series).
-    Transforms weights from R (Reals) to Q_p (p-adic numbers).
-    Under ultrametric topology, distance is determined by algebraic divisibility.
-    This makes Int8/Ternary quantization mathematically exact with zero precision loss.
-    """
-    w = tensor.cpu().float().numpy()
-    if len(w.shape) < 2:
-        return w # Skip 1D tensors (biases, norms)
-        
-    # P-adic valuation proxy: scale to integer, then map to {-1, 0, 1} via p-adic divisibility
-    w_int = np.round(w * 10000).astype(np.int32)
-    # The algebraic divisibility replaces magnitude-based thresholding
-    w_padic = np.where(w_int % p == 0, 0, np.sign(w_int))
-    return w_padic.astype(np.int8)
 
 def stream_and_quantize(model_id="Qwen/Qwen2.5-14B", output_file="14b_lambda_padic_holographic.bin"):
     print(f"Initializing p-adic streaming quantization for {model_id} (Lambda Series)...")
@@ -110,4 +75,3 @@ def stream_and_quantize(model_id="Qwen/Qwen2.5-14B", output_file="14b_lambda_pad
 
 if __name__ == "__main__":
     print("Streamer ready. In Colab, execute stream_and_quantize() directly.")
-
