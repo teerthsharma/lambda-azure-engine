@@ -33,3 +33,24 @@ impl PerfectoidTilt {
         Self { coefficients: res }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::PerfectoidTilt;
+    use crate::p_adic::PAdicWeight;
+
+    #[test]
+    fn tilt_preserves_trits() {
+        let weight = PAdicWeight { digits: 0b001001 };
+        let tilt = PerfectoidTilt::tilt(&weight);
+        assert_eq!(tilt.coefficients[..4], [1, 2, 0, 0]);
+    }
+
+    #[test]
+    fn multiply_in_f3() {
+        let a = PerfectoidTilt { coefficients: vec![1, 2] };
+        let b = PerfectoidTilt { coefficients: vec![2, 1] };
+        let product = a.multiply(&b);
+        assert_eq!(product.coefficients[0], (1 * 2) % 3);
+    }
+}
