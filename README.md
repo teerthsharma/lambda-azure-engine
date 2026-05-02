@@ -21,7 +21,7 @@ Lambda Azure Engine is an experimental sandbox for exploring **ternary quantizat
 
 ## What this repo does **not** contain
 - A real 14B/200B model or a production MoE inference pipeline.
-- A mathematically rigorous implementation of p‑adic, perfectoid, or holographic methods.
+
 - End‑to‑end training, evaluation, or deployment tooling.
 
 If you need a working large‑scale model, this repository is **not** that; it is a collection of small, illustrative experiments.
